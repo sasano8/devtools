@@ -1,1 +1,4 @@
 .volumes
+docker-compose.override.yml
+seed.json
+generated/

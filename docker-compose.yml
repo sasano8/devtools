@@ -22,8 +22,8 @@ services:
     # ports:
     #   - "9091:9091"
     volumes:
-      - ./overlays/authelia/configuration.yml:/config/configuration.yml:ro
-      - ./overlays/authelia/users_database.yml:/config/users_database.yml:ro
+      - ./.volumes/authelia/configuration.yml:/config/configuration.yml:ro
+      - ./.volumes/authelia/users_database.yml:/config/users_database.yml:ro
     networks:
       - backend
 

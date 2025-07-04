@@ -1,0 +1,9 @@
+# default password: zFFiHS7Dr5tTc6m4
+
+users:
+  {{ displayname }}:
+    disabled: false
+    displayname: {{ displayname }}
+    password: {{ hashed_password }}
+    email: {{ email }}
+    groups: {{ groups }}

@@ -2,30 +2,30 @@ from io import StringIO
 import yaml
 from jinja2 import Environment, FileSystemLoader
 
+
 class TemplateEnginBase:
     def __init__(self, **kwargs):
         self._kwargs = kwargs
         self._validate()
 
-    def _validate(self):
-        ...
+    def _validate(self): ...
 
     def render(self, path):
-        jinja_loader = Environment(loader=FileSystemLoader('.'))
+        jinja_loader = Environment(loader=FileSystemLoader("."))
         template = jinja_loader.get_template(path)
         rendered = template.render(self._kwargs)
         return rendered
-    
+
     def load_yml(self, path):
         rendered = self.render(path)
         with StringIO(rendered) as f:
             data = yaml.safe_load(f)
             return data
-        
+
     def dump_str(self, data, path):
         with open(path, "w") as f:
             f.write(data)
-        
+
     def dump_yml(self, data, path):
         with open(path, "w") as f:
             yaml.dump(data, f)
@@ -58,8 +58,10 @@ def generate(**kwargs):
 
 def generate_from_json(path):
     import json
+
     with open(path) as f:
         conf = json.load(f)
     generate(**conf["auth"])
+
 
 generate_from_json("seed.json")

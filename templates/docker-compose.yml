@@ -1,0 +1,4 @@
+services:
+  caddy:
+    environment:
+      EXTERNAL_URL: {{ domain }}

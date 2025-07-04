@@ -49,7 +49,7 @@ def generate(**kwargs):
 
     auth_configuration = conf.render("templates/configuration.yml")
     auth_users = conf.render("templates/users_database.yml")
-    compose = conf.render("templates/docker-compose.override.yml")
+    compose = conf.render("templates/docker-compose.yml")
 
     conf.dump_str(auth_configuration, ".volumes/authelia/configuration.yml")
     conf.dump_str(auth_users, ".volumes/authelia/users_database.yml")

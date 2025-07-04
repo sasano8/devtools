@@ -1,0 +1,10 @@
+{
+  "cors": {
+    "allow_origin": "*",
+    "allow_methods": "*",
+    "allow_headers": "*",
+    "expose_headers": "*",
+    "allow_credentials": true,
+    "max_age": 864000
+  }
+}

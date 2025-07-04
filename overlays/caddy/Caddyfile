@@ -1,0 +1,24 @@
+auth.{$EXTERNAL_URL} {
+    tls {$TLS_MODE}
+    reverse_proxy authelia:9091
+}
+
+supervisor.{$EXTERNAL_URL} {
+    tls {$TLS_MODE}
+    reverse_proxy cron:9001
+}
+
+httpserver.{$EXTERNAL_URL} {
+    tls {$TLS_MODE}
+    reverse_proxy cron:8000
+}
+
+webdav.{$EXTERNAL_URL} {
+    tls {$TLS_MODE}
+    reverse_proxy cron:8100
+}
+
+httpbin.{$EXTERNAL_URL} {
+    tls {$TLS_MODE}
+    reverse_proxy httpbin:80
+}

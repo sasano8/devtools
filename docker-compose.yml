@@ -11,7 +11,7 @@ services:
       - "443:443"
     environment:
       EXTERNAL_URL: 127-0-0-1.sslip.io
-      TLS_MODE: internal  # off: httpのみ internal: 自己署名証明書 <your_email>: Let's Encrypt
+      TLS_MODE: "internal"  # off: httpのみ internal: 自己署名証明書 <your_email>: Let's Encrypt
     volumes:
       - ./overlays/caddy/Caddyfile:/etc/caddy/Caddyfile
     networks:
@@ -24,6 +24,15 @@ services:
     volumes:
       - ./.volumes/authelia/configuration.yml:/config/configuration.yml:ro
       - ./.volumes/authelia/users_database.yml:/config/users_database.yml:ro
+    networks:
+      - backend
+
+  container-registry:
+    image: registry:2
+    # ports:
+      # - "5000:5000"
+    volumes:
+      - ./overlays/container-registry/config.yml:/etc/docker/registry/config.yml:ro
     networks:
       - backend
 

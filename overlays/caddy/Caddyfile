@@ -18,6 +18,11 @@ webdav.{$EXTERNAL_URL} {
     reverse_proxy cron:8100
 }
 
+container-registry.{$EXTERNAL_URL} {
+    tls {$TLS_MODE}
+    reverse_proxy httpbin:5000
+}
+
 httpbin.{$EXTERNAL_URL} {
     tls {$TLS_MODE}
     reverse_proxy httpbin:80
